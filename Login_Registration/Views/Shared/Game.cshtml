@@ -1,0 +1,77 @@
+﻿@model Login_Registration.Models.GameModel
+@{
+   ViewBag.Title = "Game";
+  //  Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div>
+        <p> Game Page</p>
+
+        @using (Html.BeginForm("Button", "Game"))
+        {
+            for (int r = 0; r < Model.board.Size; r++)
+            {
+                for (int c = 0; c < Model.board.Size; c++)
+                {
+
+                    String rowAndCol = r.ToString() + "|" + c.ToString();
+
+                    <button type="submit" name="mine" value=@rowAndCol>
+                        @if (!Model.board.grid[r, c].isVisited)
+                        {
+                            <img src="~/Images/box.png" />
+                        }
+                        else if (Model.board.grid[r, c].hasBomb)
+                        {
+                            <img src="~/Images/bomb.png" />
+                        }
+                        else if (Model.board.grid[r, c].isVisited && Model.board.grid[r, c].neighborBombs == 0)
+                        {
+                            <img src="~/Images/zero.png" />
+                        }
+                        else if (Model.board.grid[r, c].isVisited && Model.board.grid[r, c].neighborBombs == 1)
+                        {
+                            <img src="~/Images/one.png" />
+                        }
+                        else if (Model.board.grid[r, c].isVisited && Model.board.grid[r, c].neighborBombs == 2)
+                        {
+                            <img src="~/Images/two.png" />
+                        }
+                        else if (Model.board.grid[r, c].isVisited && Model.board.grid[r, c].neighborBombs == 3)
+                        {
+                            <img src="~/Images/three.png" />
+                        }
+                        else if (Model.board.grid[r, c].isVisited && Model.board.grid[r, c].neighborBombs == 4)
+                        {
+                            <img src="~/Images/four.png" />
+                        }
+                        else if (Model.board.grid[r, c].isVisited && Model.board.grid[r, c].neighborBombs == 5)
+                        {
+                            <img src="~/Images/five.png" />
+                        }
+                        else if (Model.board.grid[r, c].isVisited && Model.board.grid[r, c].neighborBombs == 6)
+                        {
+                            <img src="~/Images/six.png" />
+                        }
+                        else if (Model.board.grid[r, c].isVisited && Model.board.grid[r, c].neighborBombs == 7)
+                        {
+                            <img src="~/Images/seven.png" />
+                        }
+                        else if (Model.board.grid[r, c].isVisited && Model.board.grid[r, c].neighborBombs == 8)
+                        {
+                            <img src="~/Images/eight.png" />
+                        }
+                    </button>
+                }
+                <br />
+            }
+
+        }
+    </div>
+
+</body>
+</html>
